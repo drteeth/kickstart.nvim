@@ -11,6 +11,7 @@ vim.keymap.set("n", "<LocalLeader>tv", ":TestVisit<CR>")
 
 vim.keymap.set("n", "<leader>pt", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>ff", ":Neotree reveal<CR>")
+vim.keymap.set("n", "<leader>fb", ":!mix format %<CR>", { desc = "Elixir [F]ormat [B]uffer" })
 
 -- Switch between the last two files
 vim.keymap.set("n", "<Leader><Tab>", "<C-^>")
