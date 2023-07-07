@@ -11,7 +11,7 @@ vim.keymap.set("n", "<LocalLeader>tv", ":TestVisit<CR>")
 
 vim.keymap.set("n", "<leader>pt", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>ff", ":Neotree reveal<CR>")
-vim.keymap.set("n", "<leader>fb", ":!mix format %<CR>", { desc = "Elixir [F]ormat [B]uffer" })
+vim.keymap.set("n", "<leader>fb", ":w|!mix format %<CR>", { desc = "Elixir [F]ormat [B]uffer" })
 
 -- Switch between the last two files
 vim.keymap.set("n", "<Leader><Tab>", "<C-^>")
@@ -47,3 +47,13 @@ vim.cmd("let g:neoterm_default_mod = 'vert'")
 vim.cmd("let g:neoterm_autoscroll = 1")
 vim.cmd("let g:neoterm_keep_term_open = 0")
 vim.cmd("let g:neoterm_automap_keys = ',oo'") -- HACK to avoid having one of my binds hijacked
+
+-- Trim trailing whitespace on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = {"*"},
+  callback = function(_)
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
