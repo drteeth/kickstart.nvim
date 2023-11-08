@@ -6,6 +6,7 @@ return {
   "folke/tokyonight.nvim",
   "lunarvim/darkplus.nvim",
   "nanotech/jellybeans.vim",
+  "catppuccin/nvim",
   "lifepillar/vim-solarized8",
   "altercation/vim-colors-solarized",
   "vim-test/vim-test",
